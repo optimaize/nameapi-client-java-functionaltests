@@ -1,0 +1,33 @@
+package org.nameapi.client.java.functionaltests.disposableemailaddressdetector;
+
+import com.optimaize.command4j.CommandExecutor;
+import com.optimaize.command4j.Mode;
+import org.nameapi.client.java.functionaltests.FunctionalTestsNameApiModeFactory;
+import org.nameapi.client.lib.NameApiRemoteExecutors;
+import org.nameapi.client.services.email.disposableemailaddressdetector.DisposableEmailAddressDetectorCommand;
+import org.nameapi.ontology5.cremalang.lang.Maybe;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
+
+/**
+ */
+public class DisposableEmailAddressDetectorCommandTest {
+
+    private final CommandExecutor executor = NameApiRemoteExecutors.get();
+
+
+    @Test
+    public void yes_1() throws Exception {
+        DisposableEmailAddressDetectorCommand command = new DisposableEmailAddressDetectorCommand();
+        Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();
+        assertEquals(executor.execute(command, mode, "blahblah@10minutemail.com").get().getDisposable(), Maybe.YES);
+    }
+
+    @Test
+    public void no_1() throws Exception {
+        DisposableEmailAddressDetectorCommand command = new DisposableEmailAddressDetectorCommand();
+        Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();
+        assertEquals(executor.execute(command, mode, "someone@amazon.com").get().getDisposable(), Maybe.NO);
+    }
+}

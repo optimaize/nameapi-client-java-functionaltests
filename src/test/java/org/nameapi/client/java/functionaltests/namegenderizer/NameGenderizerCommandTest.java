@@ -1,0 +1,98 @@
+package org.nameapi.client.java.functionaltests.namegenderizer;
+
+import com.optimaize.command4j.CommandExecutor;
+import com.optimaize.command4j.Mode;
+import org.nameapi.client.java.functionaltests.AbstractTest;
+import org.nameapi.client.java.functionaltests.FunctionalTestsNameApiModeFactory;
+import org.nameapi.client.lib.NameApiRemoteExecutors;
+import org.nameapi.client.services.genderizer.persongenderizer.PersonGenderizerCommand;
+import org.nameapi.ontology5.input.entities.address.StructuredAddressBuilder;
+import org.nameapi.ontology5.input.entities.address.StructuredPlaceInfoBuilder;
+import org.nameapi.ontology5.input.entities.address.StructuredStreetInfoBuilder;
+import org.nameapi.ontology5.input.entities.person.NaturalInputPerson;
+import org.nameapi.ontology5.input.entities.person.NaturalInputPersonBuilder;
+import org.nameapi.ontology5.input.entities.person.age.AgeInfoFactory;
+import org.nameapi.ontology5.input.entities.person.gender.ComputedPersonGender;
+import org.nameapi.ontology5.input.entities.person.gender.StoragePersonGender;
+import org.nameapi.ontology5.services.genderizer.GenderizerResult;
+import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.fail;
+
+/**
+ */
+public class NameGenderizerCommandTest extends AbstractTest {
+
+    private final CommandExecutor executor = NameApiRemoteExecutors.get();
+
+    @Test
+    public void testCall() throws Exception {
+        PersonGenderizerCommand command = new PersonGenderizerCommand();
+        Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();
+        NaturalInputPerson person = new NaturalInputPersonBuilder().name(makeName("Petra Müller")).build();
+        GenderizerResult genderizerResult = executor.execute(command, mode, person).get();
+        assertEquals(genderizerResult.getGender(), ComputedPersonGender.FEMALE);
+    }
+
+    @Test
+    public void testCall2() throws Exception {
+        PersonGenderizerCommand command = new PersonGenderizerCommand();
+        Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();
+        NaturalInputPerson person = new NaturalInputPersonBuilder().name(makeName("John", "Doe"))
+                //TODO .addTitle("Dr.")
+                .age(AgeInfoFactory.forYear(1950))
+                .addNationality("US")
+                .addNativeLanguage("en")
+                .correspondenceLanguage("en")
+                .addAddressForAll(new StructuredAddressBuilder()
+                                .placeInfo(
+                                        new StructuredPlaceInfoBuilder()
+                                                .postalCode("90210")
+                                                .locality("Beverly Hills")
+                                                .country("US")
+                                                .build()
+                                )
+                                .streetInfo(
+                                        new StructuredStreetInfoBuilder()
+                                                .streetName("Hill road")
+                                                .streetNumber("512")
+                                                .build()
+                                )
+                                .build()
+                )
+        .build();
+        GenderizerResult result = executor.execute(command, mode, person).get();
+        assertEquals(result.getGender(), ComputedPersonGender.MALE);
+    }
+
+    /**
+     * Using an empty surname field.
+     */
+    @Test
+    public void testCall3() throws Exception {
+        PersonGenderizerCommand command = new PersonGenderizerCommand();
+        Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();
+        NaturalInputPerson person = new NaturalInputPersonBuilder().name(makeName("John", "")).build();
+        GenderizerResult result = executor.execute(command, mode, person).get();
+        assertEquals(result.getGender(), ComputedPersonGender.MALE);
+    }
+
+    /**
+     * Passing the gender is invalid because if it's already known it can only be validated (use another service).
+     */
+    @Test
+    public void testCall_ex() throws Exception {
+        PersonGenderizerCommand command = new PersonGenderizerCommand();
+        Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();
+        NaturalInputPerson person = new NaturalInputPersonBuilder().name(makeName("John", "Doe"))
+                .gender(StoragePersonGender.MALE)
+        .build();
+        try {
+            executor.execute(command, mode, person);
+            fail("Expected to get an exception!");
+        } catch (Exception e) {
+            //currently InternalServerErrorServiceException, something like InvalidInputServiceException would be better suited.
+        }
+    }
+}
