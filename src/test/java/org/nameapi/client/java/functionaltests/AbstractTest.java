@@ -1,4 +1,4 @@
-package org.nameapi.client.services;
+package org.nameapi.client.java.functionaltests;
 
 import org.jetbrains.annotations.NotNull;
 import org.nameapi.ontology5.input.entities.person.name.InputPersonName;
