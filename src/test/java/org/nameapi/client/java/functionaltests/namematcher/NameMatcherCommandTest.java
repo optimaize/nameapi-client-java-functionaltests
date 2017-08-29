@@ -40,7 +40,7 @@ public class NameMatcherCommandTest extends AbstractTest {
         NaturalInputPerson person2 = new NaturalInputPersonBuilder().name(makeName("Petra Mueller")).build();
         PersonMatcherArgument argument = new PersonMatcherArgument(person1, person2);
         PersonMatcherResult result = executor.execute(command, mode, argument).get();
-        assertEquals(result.getMatchType(), PersonMatchType.MATCHING);
+        assertEquals(result.getMatchType(), PersonMatchType.EQUAL);
     }
 
     @Test
