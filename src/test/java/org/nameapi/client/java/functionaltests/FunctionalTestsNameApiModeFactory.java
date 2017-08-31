@@ -22,7 +22,7 @@ public class FunctionalTestsNameApiModeFactory extends NameApiModeFactory {
             //the default and live server is "api.nameapi.org"
             new Host("api.nameapi.org", 80), NameApiPortUrlFactory.versionLatestStable())
             //we're using the latest release candidate with latest features here:
-            //new Host("rc53-nameapi.optimaize.com", 80), NameApiPortUrlFactory.versionLatestReleaseCandidate())
+            //new Host("rc53-api.nameapi.org", 80), NameApiPortUrlFactory.versionLatestReleaseCandidate())
 
             //.with(TimeoutExtension.TIMEOUT, Duration.millis(5000))
             .with(StdoutLoggingExtension.enabled())
