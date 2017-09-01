@@ -37,9 +37,10 @@ public class DE_PersonNameParserCommandTest extends AbstractTest {
         ParsedPerson parsedPerson = result.getBestMatch().getParsedPerson();
         OutputPersonName personName = parsedPerson.getOutputPersonName();
         List<Term> titles = personName.getAll(TermType.TITLE);
-        assertEquals(titles.size(), 2);
+        assertEquals(titles.size(), 3);
         assertEquals(titles.get(0).getString(), "Prof.");
-        assertEquals(titles.get(1).getString(), "Dr. Dr.");
+        assertEquals(titles.get(1).getString(), "Dr.");
+        assertEquals(titles.get(2).getString(), "Dr.");
         assertEquals(personName.getFirst(TermType.GIVENNAME).get().getString(), "Wolfgang");
         assertEquals(personName.getFirst(TermType.SURNAME).get().getString(), "Berger");
         assertEquals(parsedPerson.getGender().getGender(), ComputedPersonGender.MALE);
