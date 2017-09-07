@@ -21,7 +21,7 @@ public class ME_NameMatcherCommandTest extends AbstractTest {
 
     private final CommandExecutor executor = NameApiRemoteExecutors.get();
 
-    @Test
+//    @Test
     public void test_ME_1() throws Exception {
         PersonMatcherCommand command = new PersonMatcherCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();

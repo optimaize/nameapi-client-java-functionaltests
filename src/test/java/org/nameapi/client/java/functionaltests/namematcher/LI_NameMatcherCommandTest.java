@@ -21,7 +21,7 @@ public class LI_NameMatcherCommandTest extends AbstractTest {
 
     private final CommandExecutor executor = NameApiRemoteExecutors.get();
 
-    @Test
+//    @Test
     public void test_LI_1() throws Exception {
         PersonMatcherCommand command = new PersonMatcherCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();
@@ -32,7 +32,7 @@ public class LI_NameMatcherCommandTest extends AbstractTest {
         assertEquals(result.getMatchType(), PersonMatchType.MATCHING);
     }
 
-    @Test
+//    @Test
     public void test_LI_2() throws Exception {
         PersonMatcherCommand command = new PersonMatcherCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();
