@@ -33,7 +33,7 @@ public class AE_NameFormatterCommandTest extends AbstractTest {
         assertEquals(formatterResult.getFormatted(), "Hassan Abdul-Aziz Al-Masri");
     }
 
-    @Test
+//    @Test
     public void test_AE_2() throws Exception {
         PersonNameFormatterCommand command = new PersonNameFormatterCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();

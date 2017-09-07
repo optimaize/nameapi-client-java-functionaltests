@@ -57,7 +57,7 @@ public class LK_NameFormatterCommandTest extends AbstractTest {
         assertEquals(formatterResult.getFormatted(), "G. Hemachandra");
     }
 
-    @Test
+//    @Test
     public void test_LK_4() throws Exception {
         PersonNameFormatterCommand command = new PersonNameFormatterCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();
@@ -69,7 +69,7 @@ public class LK_NameFormatterCommandTest extends AbstractTest {
         assertEquals(formatterResult.getFormatted(), "Guruge Hemachandra Tennekoon");
     }
 
-    @Test
+//    @Test
     public void test_LK_5() throws Exception {
         PersonNameFormatterCommand command = new PersonNameFormatterCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();

@@ -69,7 +69,7 @@ public class IN_NameFormatterCommandTest extends AbstractTest {
         assertEquals(formatterResult.getFormatted(), "Suresh Patel");
     }
 
-    @Test
+//    @Test
     public void test_IN_5() throws Exception {
         PersonNameFormatterCommand command = new PersonNameFormatterCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();

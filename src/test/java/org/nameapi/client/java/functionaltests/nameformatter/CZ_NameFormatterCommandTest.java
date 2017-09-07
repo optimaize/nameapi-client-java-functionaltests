@@ -33,7 +33,7 @@ public class CZ_NameFormatterCommandTest extends AbstractTest {
         assertEquals(formatterResult.getFormatted(), "Rodina Novákova");
     }
 
-    @Test
+//    @Test
     public void test_CZ_2() throws Exception {
         PersonNameFormatterCommand command = new PersonNameFormatterCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();
