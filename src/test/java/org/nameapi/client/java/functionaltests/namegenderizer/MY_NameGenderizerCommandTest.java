@@ -47,7 +47,7 @@ public class MY_NameGenderizerCommandTest extends AbstractTest {
         assertEquals(genderizerResult.getGender(), ComputedPersonGender.MALE);
     }
 
-    @Test
+//    @Test
     public void test_MY_4() throws Exception {
         PersonGenderizerCommand command = new PersonGenderizerCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();

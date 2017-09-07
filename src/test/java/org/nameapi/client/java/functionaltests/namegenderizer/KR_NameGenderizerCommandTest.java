@@ -20,7 +20,7 @@ public class KR_NameGenderizerCommandTest extends AbstractTest {
 
     private final CommandExecutor executor = NameApiRemoteExecutors.get();
 
-    @Test
+//    @Test
     public void test_KR_1() throws Exception {
         PersonGenderizerCommand command = new PersonGenderizerCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();
