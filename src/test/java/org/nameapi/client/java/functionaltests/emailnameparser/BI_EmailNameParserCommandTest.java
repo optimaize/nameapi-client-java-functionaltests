@@ -27,7 +27,7 @@ public class BI_EmailNameParserCommandTest {
         assertEquals(result.getBestNameMatch().get().getSurnames().get(0).getName(), "nzeyimana");
     }
 
-    @Test
+//    @Test
     public void test_BI_2() throws Exception {
         EmailNameParserCommand command = new EmailNameParserCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();

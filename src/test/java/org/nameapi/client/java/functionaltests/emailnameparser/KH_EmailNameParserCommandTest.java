@@ -27,7 +27,7 @@ public class KH_EmailNameParserCommandTest {
         assertEquals(result.getBestNameMatch().get().getSurnames().get(0).getName(), "sok");
     }
 
-    @Test
+//    @Test
     public void test_KH_2() throws Exception {
         EmailNameParserCommand command = new EmailNameParserCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();

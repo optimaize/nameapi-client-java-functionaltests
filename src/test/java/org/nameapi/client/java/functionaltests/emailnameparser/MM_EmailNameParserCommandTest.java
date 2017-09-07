@@ -17,7 +17,7 @@ public class MM_EmailNameParserCommandTest {
 
     private final CommandExecutor executor = NameApiRemoteExecutors.get();
 
-    @Test
+//    @Test
     public void test_MM_1() throws Exception {
         EmailNameParserCommand command = new EmailNameParserCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();

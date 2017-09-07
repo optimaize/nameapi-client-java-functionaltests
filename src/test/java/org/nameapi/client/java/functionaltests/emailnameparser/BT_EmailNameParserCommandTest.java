@@ -17,7 +17,7 @@ public class BT_EmailNameParserCommandTest {
 
     private final CommandExecutor executor = NameApiRemoteExecutors.get();
 
-    @Test
+//    @Test
     public void test_BT_1() throws Exception {
         EmailNameParserCommand command = new EmailNameParserCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();
@@ -27,7 +27,7 @@ public class BT_EmailNameParserCommandTest {
         assertEquals(result.getBestNameMatch().get().getGivenNames().get(1).getName(), "jigme");
     }
 
-    @Test
+//    @Test
     public void test_BT_2() throws Exception {
         EmailNameParserCommand command = new EmailNameParserCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();

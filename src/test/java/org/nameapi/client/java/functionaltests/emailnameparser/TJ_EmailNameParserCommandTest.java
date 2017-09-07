@@ -27,7 +27,7 @@ public class TJ_EmailNameParserCommandTest {
         assertEquals(result.getBestNameMatch().get().getSurnames().get(0).getName(), "rustamzod");
     }
 
-    @Test
+//    @Test
     public void test_TJ_2() throws Exception {
         EmailNameParserCommand command = new EmailNameParserCommand();
         Mode mode = FunctionalTestsNameApiModeFactory.functionalTest();
