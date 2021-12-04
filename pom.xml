@@ -37,7 +37,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.7</java.version>
         <anythingworks.version>0.5</anythingworks.version>
-        <ontology.version>5.1</ontology.version>
+        <ontology.version>5.3.4</ontology.version>
         <nameapi-client.version>5.0.1</nameapi-client.version>
     </properties>
 
